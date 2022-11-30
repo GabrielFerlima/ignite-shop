@@ -18,8 +18,8 @@ const Button = styled('button', {
 export default function Home() {
   return (
   <Button>
-    <span>Text</span>
-    Enviar</Button>
+    HOME
+  </Button>
   )
   }
   
