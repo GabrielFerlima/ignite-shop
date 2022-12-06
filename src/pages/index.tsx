@@ -5,11 +5,7 @@ const Button = styled('button', {
   borderRadius: 4,
   border: 0,
   padding: '4p 8px',
-
-  span: {
-    fontWeight: 'bold',
-  },
-
+  
   '&:hover': {
     filter: 'brightness(0.8)'
   },
