@@ -6,21 +6,26 @@ import { stripe } from "../../lib/stripe"
 import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product"
 
 interface ProductProps {
-  product: {
-    id: string
-    name: string
-    imageUrl: string
-    price: string
-    description: string
-  }
+    product: {
+        id: string
+        name: string
+        imageUrl: string
+        price: string
+        description: string
+    }
 }
 
-export default function Product( { product }:ProductProps) {
+export default function Product({ product }: ProductProps) {
+    const { isFallback } = useRouter()
+    
+    if (isFallback) {
+        return <p>Loading...</p>
+    }
 
     return (
         <ProductContainer>
             <ImageContainer>
-                <Image  src={product.imageUrl} width={520} height={400} alt=""/>
+                <Image src={product.imageUrl} width={520} height={400} alt="" />
             </ImageContainer>
 
             <ProductDetails>
@@ -35,14 +40,15 @@ export default function Product( { product }:ProductProps) {
     )
 }
 
-export const getStaticPaths : GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+
     return {
         paths: [
             {
-                params: {id: 'prod_Mwd7tq1i1ZS8m6'}
+                params: { id: 'prod_Mwd7tq1i1ZS8m6' }
             }
         ],
-        fallback: false 
+        fallback: true,
     }
 }
 
